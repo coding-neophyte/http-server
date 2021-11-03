@@ -13,7 +13,7 @@ describe('parse-body', () => {
 
     const req = {
       method: 'POST',
-      header: {
+      headers: {
         'content-type': 'text/plain'
       }
     };
@@ -28,7 +28,7 @@ describe('parse-body', () => {
 
   it('returns deserialized body from req emitted events', async () => {
     const req = new EventEmitter();
-    req.header = { 'content-type': 'application/json' };
+    req.headers = { 'content-type': 'application/json' };
     req.method = 'POST';
     const reqParse = parseBody(req);
 
@@ -44,7 +44,7 @@ describe('parse-body', () => {
 
   it('throws if failure happens in deserialization', async () => {
     const req = new EventEmitter();
-    req.header = { 'content-type': 'application/json' };
+    req.headers = { 'content-type': 'application/json' };
     req.method = 'POST';
     const reqParse = parseBody(req);
 
